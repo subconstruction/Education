@@ -11,10 +11,10 @@ int main() {
     for (int i = 2; i <= tableSize; ++i) {
 
         for (int j = 1; j <= 10; ++j) {
-            int result = i * j;
+            int mResult = i * j;
 
-            if (i == 2 && j == 2) iter = "2x2=" + to_string(result);
-            cout << i << " x " << j << " = " << result << "\n";
+            if (i == 2 && j == 2) iter = "2x2=" + to_string(mResult);
+            cout << i << " x " << j << " = " << mResult << "\n";
         }
 
         cout << "\n";
