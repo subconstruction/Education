@@ -9,13 +9,22 @@ int genN(int min, int max) {
     return i;
 }
 
-int doStackOverflow(int a) {
+int doStackOverflow(int* a) {
+    cout << *a;
+
     return doStackOverflow(a);
 }
 
 int main() 
-{ 
-    doStackOverflow(2);
+{
+    int cool_int = 2;
+    int* cool_ptr = &cool_int;
+
+    reinterpret_cast<int32_t> (cool_int);
+
+    cout << cool_int << endl;
+
+    //doStackOverflow(cool_ptr);
     srand((unsigned)time(NULL));
 
     for (int i=0;i<=10;i++) {
