@@ -8,6 +8,13 @@
             "MIMode": "lldb"
         },
         {
+            "name": "(lldb) Attach",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "enter program name, for example ${workspaceFolder}/a.out",
+            "MIMode": "lldb"
+        },
+        {
             "name": "C/C++: clang build and debug active file",
             "type": "cppdbg",
             "request": "launch",
