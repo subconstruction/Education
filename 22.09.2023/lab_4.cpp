@@ -31,9 +31,12 @@ string cipher(string mytext, int key, char* METHOD)
 {   
     string alfavit = "абвгдежзийклмнопрстуфхцчшщъыьэюя 0123456789";
     string shifr_text="";
+
     int a = mytext.length();
     int b = alfavit.length();
-    key = key % b;
+    
+    key %= b;
+
     for (int i = 0; i < a; i++)
     {
         for (int j = 0; j < b; j++)
