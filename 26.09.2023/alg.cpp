@@ -18,7 +18,7 @@ int main() {
     std::cin >> a >> b;
 
     result = alg(a, b);
-    std::cout << "НОД -> " << result;
+    std::cout << "НОД: " << result;
 
     return 0;
 }
