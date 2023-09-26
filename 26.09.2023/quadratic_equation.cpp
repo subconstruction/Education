@@ -3,16 +3,16 @@
 #include <vector>
 #include <sstream>
 
-std::vector<std::string> split(const std::string& str, char delimiter) {
-    std::vector<std::string> tokens;
-    std::istringstream tokenStream(str);
-    std::string token;
+std::vector<std::string> split(const std::string& str, char separator) {
+    std::vector<std::string> inputVector;
+    std::istringstream inputStream(str);
+    std::string inputString;
 
-    while (std::getline(tokenStream, token, delimiter)) {
-        tokens.push_back(token);
+    while (std::getline(inputStream, inputString, separator)) {
+        inputVector.push_back(inputString);
     }
 
-    return tokens;
+    return inputVector;
 }
 
 int main() {
@@ -22,13 +22,11 @@ int main() {
     std::cout << "Укажите a,b,c (используйте запятую как разделитель)" << "\n";
     std::cin >> input;
     
-    std::vector<std::string> tokens = split(input, ',');
+    std::vector<std::string> inputVector = split(input, ',');
 
-    a = std::stod(tokens[0]);
-    b = std::stod(tokens[1]);
-    c = std::stod(tokens[2]);
-
-    std::cout << a;
+    a = std::stod(inputVector[0]);
+    b = std::stod(inputVector[1]);
+    c = std::stod(inputVector[2]);
 
     double discriminant = (b*b) - (4*a*c);
 
@@ -41,7 +39,7 @@ int main() {
     Root = (-b + sqrt(discriminant)) / 2*a;
     Root2 = (-b - sqrt(discriminant)) / 2*a;
 
-    printf("Discriminant -> %d | Root -> %d | Root2 -> %d", discriminant, Root, Root2);
+    printf("Discriminant -> %f | Root -> %f | Root2 -> %f", discriminant, Root, Root2);
 
     return 0;
 }
