@@ -16,21 +16,21 @@ std::vector<std::string> split(const std::string& str, char delimiter) {
 }
 
 int main() {
-    std::string input = "1,9,1";
+    std::string input;
     double a,b,c,Root, Root2;
 
     std::cout << "Укажите a,b,c (используйте запятую как разделитель)" << "\n";
-    //std::cin >> input;
-
-    char delimiter = ',';
+    std::cin >> input;
     
-    std::vector<std::string> tokens = split(input, delimiter);
+    std::vector<std::string> tokens = split(input, ',');
 
     a = std::stod(tokens[0]);
     b = std::stod(tokens[1]);
     c = std::stod(tokens[2]);
 
-    double discriminant = (a*a) + (4*a*c);
+    std::cout << a;
+
+    double discriminant = (b*b) - (4*a*c);
 
     if (discriminant < 0) {
         std::cout << "Discriminant is under 0";
