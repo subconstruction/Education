@@ -19,7 +19,7 @@ int main() {
     std::string input;
     double a,b,c,Root, Root2;
 
-    std::cout << "Укажите a,b,c (используйте запятую как разделитель)" << "\n";
+    std::cout << "Enter a,b,c (use coma as separator)" << "\n";
     std::cin >> input;
     
     std::vector<std::string> inputVector = split(input, ',');
