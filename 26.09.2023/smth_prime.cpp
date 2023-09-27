@@ -30,12 +30,12 @@ int main() {
     std::vector<int> generatedVector;
     int primeCount = 0, numSum = 0, maxIter = 20;
 
-    long long numMult = 1;
+    unsigned long long numMult = 1;
 
     srand(time(NULL));
     
     for (int i = 0; i < maxIter; i++) {
-        int generatedNum = rand() % 101;
+        unsigned int generatedNum = rand() % 101;
 
         if (isPrime(generatedNum)) primeCount++;
 
