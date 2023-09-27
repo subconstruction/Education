@@ -9,19 +9,28 @@ const bool isPrime(unsigned int n)
 
     return true;
 }
+
 int Math(const std::string method, std::vector<int> &arr) {
-    std::cout << "Math has been initialized with: vector<int> { ";
+    static std::vector<int>* vector_ptr = nullptr;
+
+    if (vector_ptr == nullptr) {
+        vector_ptr = &arr;
+
+        std::cout << "Math has been initialized with: vector<int> { ";
+
+        for (int num : arr) {
+            std::cout << num << " ";
+        }
+
+        std::cout << "}" << std::endl;
+    }
 
     int returnValue = arr[0];
 
-    for (int num : arr) {
+    for (int num : *vector_ptr) {
         if (method == "min") returnValue = num < returnValue ? num : returnValue;
         else if (method == "max") returnValue = num > returnValue ? num : returnValue;
-
-        std::cout << num << ", ";
     }
-
-    std::cout << "}" << std::endl;
 
     return returnValue;
 }
