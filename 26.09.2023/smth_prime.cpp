@@ -28,7 +28,9 @@ int Math(const std::string method, std::vector<int> &arr) {
 
 int main() {
     std::vector<int> generatedVector;
-    int primeCount = 0, numSum = 0, numMult = 1, maxIter = 20;
+    int primeCount = 0, numSum = 0, maxIter = 20;
+
+    unsigned long long numMult = 1;
 
     srand(time(NULL));
     
@@ -38,7 +40,7 @@ int main() {
         if (isPrime(generatedNum)) primeCount++;
 
         numSum += generatedNum;
-        numMult = numMult * generatedNum;
+        numMult *= generatedNum;
 
         generatedVector.push_back(generatedNum);
     }
