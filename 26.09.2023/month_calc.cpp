@@ -6,5 +6,5 @@ int main() {
 	unsigned int input;
 
 	std::cin >> input;
-	std::cout << arr[input - 1];
+	std::cout << [input - 1]arr;
 }
