@@ -10,7 +10,7 @@ const bool isPrime(unsigned int n)
     return true;
 }
 
-int Math(const std::string &method, std::vector<int> &arr) {
+int Math(const std::string& method, std::vector<int> &arr) {
     static std::vector<int>* vector_ptr = nullptr;
 
     if (vector_ptr == nullptr) {
