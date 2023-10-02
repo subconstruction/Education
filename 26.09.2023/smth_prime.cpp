@@ -22,7 +22,7 @@ int Math(const std::string& method, std::vector<int> &arr) {
             std::cout << num << " ";
         }
 
-        std::cout << "}" << std::endl;
+        std::cout << "}\n";
     }
 
     int returnValue = arr[0];
