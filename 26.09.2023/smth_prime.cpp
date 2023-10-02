@@ -39,7 +39,7 @@ int main() {
     std::vector<int> generatedVector;
     int primeCount = 0, numSum = 0, maxIter = 20;
 
-    unsigned long long numMult = 1;
+    int64_t numMult = 1;
 
     srand(time(NULL));
 
