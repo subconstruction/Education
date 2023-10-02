@@ -54,7 +54,7 @@ int main() {
         generatedVector.push_back(generatedNum);
     }
 
-    printf("Prime Numbers Count: [%d] | Non-Prime Numbers Count: [%d] | Numbers Summ: [%d] | Numbers Product: [%d] | Minimum Number: [%d] | Maximum Number: [%d]", primeCount, maxIter - primeCount, numSum, numMult, Math("min", generatedVector), Math("max", generatedVector));
+    printf("Prime Numbers Count: [%d] | Non-Prime Numbers Count: [%d] | Numbers Summ: [%d] | Numbers Product: [%u] | Minimum Number: [%d] | Maximum Number: [%d]", primeCount, maxIter - primeCount, numSum, numMult, Math("min", generatedVector), Math("max", generatedVector));
 
 	return 0;
 }
