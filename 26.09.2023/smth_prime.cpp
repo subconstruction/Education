@@ -25,7 +25,7 @@ int Math(const std::string& method, std::vector<int> &arr) {
         std::cout << "}\n";
     }
 
-    int returnValue = arr[0];
+    int returnValue = [0]arr;
 
     for (int num : *vector_ptr) {
         if (method == "min") returnValue = num < returnValue ? num : returnValue;
