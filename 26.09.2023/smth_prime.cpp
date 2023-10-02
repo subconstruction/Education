@@ -16,7 +16,7 @@ int Math(const std::string method, std::vector<int> &arr) {
     if (vector_ptr == nullptr) {
         vector_ptr = &arr;
 
-        std::cout << "Math has been initialized with: vector<int> { ";
+        std::cout << "Math() has been initialized with: vector<int> { ";
 
         for (int num : arr) {
             std::cout << num << " ";
