@@ -10,19 +10,19 @@ const bool isPrime(unsigned int n)
     return true;
 }
 
-int Math(const std::string method, std::vector<int> &arr) {
+int Math(const std::string& method, std::vector<int>& arr) {
     static std::vector<int>* vector_ptr = nullptr;
 
     if (vector_ptr == nullptr) {
         vector_ptr = &arr;
 
-        std::cout << "Math has been initialized with: vector<int> { ";
+        std::cout << "Math() has been initialized with: std::vector<int> { ";
 
         for (int num : arr) {
             std::cout << num << " ";
         }
 
-        std::cout << "}" << std::endl;
+        std::cout << "}\n\n";
     }
 
     int returnValue = arr[0];
@@ -39,10 +39,10 @@ int main() {
     std::vector<int> generatedVector;
     int primeCount = 0, numSum = 0, maxIter = 20;
 
-    unsigned long long numMult = 1;
+    int64_t numMult = 1;
 
     srand(time(NULL));
-    
+
     for (int i = 0; i < maxIter; i++) {
         unsigned int generatedNum = rand() % 101;
 
@@ -54,7 +54,7 @@ int main() {
         generatedVector.push_back(generatedNum);
     }
 
-    printf("Prime Numbers Count: [%d] | Non-Prime Numbers Count: [%d] | Numbers Summ: [%d] | Numbers Product: [%d] | Minimum Number: [%d] | Maximum Number: [%d]", primeCount, maxIter - primeCount, numSum, numMult, Math("min", generatedVector), Math("max", generatedVector));
+    printf("Prime Numbers Count: [%d] | Non-Prime Numbers Count: [%d] | Numbers Summ: [%d] | Numbers Product: [%u] | Minimum Number: [%d] | Maximum Number: [%d]", primeCount, maxIter - primeCount, numSum, numMult, Math("min", generatedVector), Math("max", generatedVector));
 
-	return 0;
+    return 0;
 }
