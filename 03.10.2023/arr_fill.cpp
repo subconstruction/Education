@@ -18,7 +18,7 @@ int main() {
 
     while (true) {
         if (newVec.size() == 10) break;
-        uint8_t num = genN(10, 25);
+        unsigned int num = genN(10, 25);
 
         if (searchForElement(newVec, num)) {
             printf("Skipped [%d] ~ found in vector<int>\n", num);
