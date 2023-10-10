@@ -35,10 +35,10 @@ int main() {
 
     shakerSort(arr);
 
-    std::cout << "Sorted array: ";
+    cout << "Sorted array: ";
     
     for (int num : arr) {
-        std::cout << num << "\t";
+        cout << num << "\t";
     }
 
     return 0;
