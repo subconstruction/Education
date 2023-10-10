@@ -27,7 +27,7 @@ void shakerSort(std::vector<int>& arr) {
                 swapped = true;
             }
         }
-    } while (swapped);
+    } while (true);
 }
 
 int main() {
