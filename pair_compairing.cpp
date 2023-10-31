@@ -6,6 +6,7 @@ using namespace std;
 
 int main() {
     srand(static_cast<unsigned>(time(0)));
+
     int array[100];
     int count = 0;
 
