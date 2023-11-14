@@ -1,14 +1,15 @@
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+
 #include "Header.h"
-#include <iostream>
 
 void createAndSaveRandomArray(const std::string& filename, int size) {
     std::ofstream file(filename);
     if (!file.is_open()) {
-        std::cout << "Не удалось открыть файл для записи." << std::endl;
+        std::cout << "Файл не найден" << std::endl;
         return;
     }
 
