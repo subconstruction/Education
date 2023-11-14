@@ -27,7 +27,7 @@ public:
     }
 
     const int findMin() {
-        if (array.empty()) return INT_MAX;
+        if (array.empty()) return INT_MIN;
         return *std::min_element(array.begin(), array.end());
     }
 
@@ -37,7 +37,7 @@ public:
     }
 
     const double findAverage() {
-        if (array.empty()) return 0.0;
+        if (array.empty()) return INT_MIN;
         return std::accumulate(array.begin(), array.end(), 0.0) / array.size();
     }
 
