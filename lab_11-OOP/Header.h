@@ -37,7 +37,7 @@ public:
     }
 
     const double findAverage() {
-        if (array.empty()) return INT_MIN;
+        if (array.empty()) return 0.0;
         return std::accumulate(array.begin(), array.end(), 0.0) / array.size();
     }
 
