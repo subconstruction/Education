@@ -1,44 +1,57 @@
+#ifndef Header_h
+#define Header_h
+
+#include <iostream>
 #include <fstream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
+#include <numeric>
+#include <algorithm>
 
-#include "Header.h"
+class arraySanitizer {
+private:
+    std::vector<int> array;
 
-using namespace std;
+public:
+    void loadFromFile(const std::string& filename) {
+        std::ifstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Не удалось открыть файл для чтения." << std::endl;
+            return;
+        }
 
-void createAndSaveRandomArray(const string& filename, int size) {
-    ofstream file(filename);
-    if (!file.is_open()) {
-        cout << "Не удалось открыть файл для записи." << endl;
-        return;
+        int value;
+        while (file >> value) {
+            array.push_back(value);
+        }
+        file.close();
     }
 
-    srand(static_cast<unsigned>(time(nullptr)));
-
-    for (int i = 0; i < size; i++) {
-        int num = rand() % 100;
-        file << num << (i < size - 1 ? " " : "");
+    const int findMin() {
+        if (array.empty()) return INT_MIN;
+        return *std::min_element(array.begin(), array.end());
     }
 
-    file.close();
-}
+    const int findMax() {
+        if (array.empty()) return INT_MIN;
+        return *std::max_element(array.begin(), array.end());
+    }
 
-int main() {
-    const string filename = "data.txt";
-    createAndSaveRandomArray(filename, 10);
+    const double findAverage() {
+        if (array.empty()) return 0.0;
+        return std::accumulate(array.begin(), array.end(), 0.0) / array.size();
+    }
 
-    arraySanitizer sanitizer;
-    sanitizer.loadFromFile(filename);
+    const int countGreaterThan(int value) {
+        return static_cast<const int> (std::count_if(array.begin(), array.end(), [value](int elem){ return elem > value; }));
+    }
 
-    cout << "Исходный массив: ";
-    sanitizer.printArray();
+    const void printArray() {
+        for (int num : array) {
+            std::cout << num << " ";
+        }
+        std::cout << std::endl;
+    }
+};
 
-    cout << "Минимальное значение: " << sanitizer.findMin() << endl;
-    cout << "Максимальное значение: " << sanitizer.findMax() << endl;
-    cout << "Среднее значение: " << sanitizer.findAverage() << endl;
-    cout << "Количество элементов больше 30: " << sanitizer.countGreaterThan(30) << endl;
 
-    return 0;
-}
+#endif
