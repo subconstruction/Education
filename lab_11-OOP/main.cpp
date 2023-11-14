@@ -18,8 +18,8 @@ void createAndSaveRandomArray(const string& filename, int size) {
     srand(time(nullptr));
 
     for (int i = 0; i < size; i++) {
-        int random_number = rand() % 100;
-        file << random_number << (i < size - 1 ? " " : "");
+        int num = rand() % 100;
+        file << num << (i < size - 1 ? " " : "");
     }
 
     file.close();
