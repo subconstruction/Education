@@ -1,22 +1,24 @@
-#include <iostream>
 #include <fstream>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
 
 #include "Header.h"
 
-void createAndSaveRandomArray(const std::string& filename, int size) {
-    std::ofstream file(filename);
+using namespace std;
+
+void createAndSaveRandomArray(const string& filename, int size) {
+    ofstream file(filename);
     if (!file.is_open()) {
-        std::cout << "Файл не найден" << std::endl;
+        cout << "Не удалось открыть файл для записи." << endl;
         return;
     }
 
-    std::srand(time(nullptr));
+    srand(time(nullptr));
 
     for (int i = 0; i < size; i++) {
-        int random_number = std::rand() % 100;
+        int random_number = rand() % 100;
         file << random_number << (i < size - 1 ? " " : "");
     }
 
@@ -24,19 +26,19 @@ void createAndSaveRandomArray(const std::string& filename, int size) {
 }
 
 int main() {
-    const std::string filename = "data.txt";
+    const string filename = "data.txt";
     createAndSaveRandomArray(filename, 10);
 
     arraySanitizer sanitizer;
     sanitizer.loadFromFile(filename);
 
-    std::cout << "Исходный массив: ";
+    cout << "Исходный массив: ";
     sanitizer.printArray();
 
-    std::cout << "Минимальное значение: " << sanitizer.findMin() << std::endl;
-    std::cout << "Максимальное значение: " << sanitizer.findMax() << std::endl;
-    std::cout << "Среднее значение: " << sanitizer.findAverage() << std::endl;
-    std::cout << "Количество элементов больше 30: " << sanitizer.countGreaterThan(30) << std::endl;
+    cout << "Минимальное значение: " << sanitizer.findMin() << endl;
+    cout << "Максимальное значение: " << sanitizer.findMax() << endl;
+    cout << "Среднее значение: " << sanitizer.findAverage() << endl;
+    cout << "Количество элементов больше 30: " << sanitizer.countGreaterThan(30) << endl;
 
     return 0;
 }
