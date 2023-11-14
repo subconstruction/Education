@@ -15,7 +15,7 @@ void createAndSaveRandomArray(const string& filename, int size) {
         return;
     }
 
-    srand(time(nullptr));
+    srand(static_cast<unsigned>(time(nullptr)));
 
     for (int i = 0; i < size; i++) {
         int num = rand() % 100;
