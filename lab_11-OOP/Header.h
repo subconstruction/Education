@@ -26,26 +26,26 @@ public:
         file.close();
     }
 
-    int findMin() const {
+    const int findMin() {
         if (array.empty()) return INT_MAX;
         return *std::min_element(array.begin(), array.end());
     }
 
-    int findMax() const {
+    const int findMax() {
         if (array.empty()) return INT_MIN;
         return *std::max_element(array.begin(), array.end());
     }
 
-    double findAverage() const {
+    const double findAverage() {
         if (array.empty()) return 0.0;
         return std::accumulate(array.begin(), array.end(), 0.0) / array.size();
     }
 
-    int countGreaterThan(int value) const {
+    const int countGreaterThan(int value) {
         return std::count_if(array.begin(), array.end(), [value](int elem){ return elem > value; });
     }
 
-    void printArray() const {
+    const void printArray() {
         for (int num : array) {
             std::cout << num << " ";
         }
