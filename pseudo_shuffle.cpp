@@ -31,7 +31,7 @@ int main() {
     }
 
     std::ofstream outfile("otveti_new.txt");
-    outfile << "  sdsd";
+
     for (const auto& answer : answers) {
         outfile << answer << "\n";
     }
