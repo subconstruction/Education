@@ -6,8 +6,8 @@
 #include <iterator>
 
 int main() {
-    std::ifstream questionsFile("questions.txt"), answersFile("answers.txt"), timeFile("time.txt");
-    std::ofstream newQuestionsFile("voprosy_new.txt"), newAnswersFile("otveti_new.txt"), newTimeFile("time_new.txt");
+    std::ifstream questionsFile("vosrosi_base.txt"), answersFile("answers_base.txt"), timeFile("time_base.txt");
+    std::ofstream newQuestionsFile("voprosi_new.txt"), newAnswersFile("otveti_new.txt"), newTimeFile("time_new.txt");
 
     std::vector<std::string> questions, answers, time;
     std::string line;
