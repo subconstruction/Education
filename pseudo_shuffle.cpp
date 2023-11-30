@@ -1,38 +1,43 @@
+#include <iostream>
 #include <fstream>
-#include <vector>
 #include <string>
+#include <vector>
 #include <algorithm>
 #include <random>
-#include <iterator>
+#include <chrono>
 
 int main() {
-    std::ifstream questionsFile("vosrosi_base.txt"), answersFile("answers_base.txt"), timeFile("time_base.txt");
-    std::ofstream newQuestionsFile("voprosi_new.txt"), newAnswersFile("otveti_new.txt"), newTimeFile("time_new.txt");
-
-    std::vector<std::string> questions, answers, time;
     std::string line;
-    std::vector<int> indices;
+    std::vector<std::string> answers;
+    std::ifstream file("otveti_base.txt");
 
-    while (getline(questionsFile, line)) {
-        questions.push_back(line);
-        indices.push_back(indices.size());
-    }
-    while (getline(answersFile, line)) {
+    while (getline(file, line)) {
         answers.push_back(line);
     }
-    while (getline(timeFile, line)) {
-        time.push_back(line);
+    file.close();
+
+    int num_questions = answers.size();
+
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(answers.begin(), answers.end(), std::default_random_engine(seed));
+
+    for (int i = 0; i < num_questions; ) {
+        if (answers[i] == line) {
+            std::shuffle(answers.begin(), answers.end(), std::default_random_engine(seed));
+            i = 0;
+        } else {
+            i++;
+        }
     }
 
-    std::random_device rd;
-    std::mt19937 g(rd());
-    std::shuffle(indices.begin(), indices.end(), g);
-
-    for (int i : indices) {
-        newQuestionsFile << questions[i] << "\n";
-        newAnswersFile << answers[i] << "\n";
-        newTimeFile << time[i] << "\n";
+    std::ofstream outfile("otveti_new.txt");
+    outfile << "  sdsd";
+    for (const auto& answer : answers) {
+        outfile << answer << "\n";
     }
+    outfile.close();
+
+    std::cout << "Количество вопросов: " << num_questions << std::endl;
 
     return 0;
 }
