@@ -1,35 +1,40 @@
 #include <iostream>
 #include <vector>
-#include <Windows.h>
+#include <windows.h>
+#include <tlhelp32.h>
 
-bool isProcessRunning(const std::wstring& processName) {
-    HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+// Function to check if a process with the specified name is running
+bool IsProcessRunning(const std::wstring& processName) {
+    HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 
-    if (snapshot == INVALID_HANDLE_VALUE) {
+    if (hSnapshot == INVALID_HANDLE_VALUE) {
+        std::cerr << "Error creating process snapshot. Error code: " << GetLastError() << std::endl;
         return false;
     }
 
-    PROCESSENTRY32 processEntry;
-    processEntry.dwSize = sizeof(PROCESSENTRY32);
+    PROCESSENTRY32 pe32;
+    pe32.dwSize = sizeof(PROCESSENTRY32);
 
-    if (Process32First(snapshot, &processEntry)) {
+    if (Process32First(hSnapshot, &pe32)) {
         do {
-            if (_wcsicmp(processEntry.szExeFile, processName.c_str()) == 0) {
-                CloseHandle(snapshot);
+            if (processName == pe32.szExeFile) {
+                CloseHandle(hSnapshot);
                 return true; // Process found
             }
-        } while (Process32Next(snapshot, &processEntry));
+        } while (Process32Next(hSnapshot, &pe32));
     }
 
-    CloseHandle(snapshot);
+    CloseHandle(hSnapshot);
     return false; // Process not found
 }
 
 int main() {
-    std::vector<std::wstring> processesToDetect = {L"notepad.exe", L"explorer.exe", L"chrome.exe"};
+    // Specify the process names to detect
+    std::vector<std::wstring> processNames = { L"notepad.exe", L"explorer.exe", L"chrome.exe" };
 
-    for (const auto& processName : processesToDetect) {
-        if (isProcessRunning(processName)) {
+    // Check if each process is running
+    for (const auto& processName : processNames) {
+        if (IsProcessRunning(processName)) {
             std::wcout << processName << " is running." << std::endl;
         } else {
             std::wcout << processName << " is not running." << std::endl;
