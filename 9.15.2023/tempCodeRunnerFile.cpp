@@ -59,7 +59,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
         CreateControls(hWnd);
         break;
     case WM_COMMAND:
-        if (lParam == (LPARAM)g_hButton) {
+        if (LOWORD(wParam) == BN_CLICKED && (HWND)lParam == g_hButton) {
             ToggleTextVisibility();
         }
         break;
@@ -83,6 +83,9 @@ void CreateControls(HWND hWnd) {
 }
 
 void ToggleTextVisibility() {
-    // Toggle visibility of the text control
-    ShowWindow(g_hText, IsWindowVisible(g_hText) ? SW_HIDE : SW_SHOW);
+    // Get the current visibility state of the text control
+    BOOL isVisible = IsWindowVisible(g_hText);
+
+    // Toggle the visibility of the text control
+    ShowWindow(g_hText, isVisible ? SW_HIDE : SW_SHOW);
 }
