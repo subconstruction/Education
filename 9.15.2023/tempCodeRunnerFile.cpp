@@ -10,9 +10,9 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 void CreateControls(HWND hWnd);
 void ToggleTextVisibility();
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
     // Register the window class.
-    const char CLASS_NAME[] = "Sample Window Class";
+    const wchar_t CLASS_NAME[] = L"Sample Window Class";
 
     WNDCLASS wc = {};
     wc.lpfnWndProc = WindowProc;
@@ -25,7 +25,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     g_hWnd = CreateWindowEx(
         0,                              // Optional window styles.
         CLASS_NAME,                     // Window class
-        "Windows App with Text and Button", // Window text
+        L"Windows App with Text and Button", // Window text
         WS_OVERLAPPEDWINDOW,            // Window style
 
         // Size and position
@@ -74,11 +74,11 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 
 void CreateControls(HWND hWnd) {
     // Create a button
-    g_hButton = CreateWindowEx(0, "BUTTON", "Toggle Text", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
+    g_hButton = CreateWindowEx(0, L"BUTTON", L"Toggle Text", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
         10, 10, 100, 30, hWnd, NULL, NULL, NULL);
 
     // Create a static text control
-    g_hText = CreateWindowEx(0, "STATIC", "Desired Text", WS_VISIBLE | WS_CHILD | SS_LEFT,
+    g_hText = CreateWindowEx(0, L"STATIC", L"Desired Text", WS_VISIBLE | WS_CHILD | SS_LEFT,
         10, 50, 200, 100, hWnd, NULL, NULL, NULL);
 }
 
