@@ -1,15 +1,51 @@
-    int tableSize = 10;
+#include "stdafx.h"
+#include <string>
 
-    for (int i = 2; i <= tableSize; ++i) {
+namespace YourAppName {
 
-        for (int j = 1; j <= 10; ++j) {
-            int mResult = i * j;
+    using namespace System;
+    using namespace System::Windows::Forms;
 
-            if (i == 2 && j == 2) iter = "2x2=" + to_string(mResult);
-            cout << i << " x " << j << " = " << mResult << "\n";
+    public ref class MainForm : public Form {
+    public:
+        MainForm() {
+            InitializeComponents();
         }
 
-        cout << "\n";
-    }
+    private:
+        void InitializeComponents() {
+            // TextBox
+            textBox = gcnew TextBox();
+            textBox->Multiline = true;
+            textBox->Size = Drawing::Size(200, 100);
+            textBox->Location = Drawing::Point(10, 10);
+            this->Controls->Add(textBox);
 
-    cout << "My iteration: " << iter;
+            // Button
+            button = gcnew Button();
+            button->Text = "Toggle Text";
+            button->Size = Drawing::Size(100, 30);
+            button->Location = Drawing::Point(10, 120);
+            button->Click += gcnew EventHandler(this, &MainForm::ToggleText);
+            this->Controls->Add(button);
+        }
+
+        void ToggleText(Object^ sender, EventArgs^ e) {
+            // Toggle visibility of the text
+            textBox->Visible = !textBox->Visible;
+        }
+
+    private:
+        TextBox^ textBox;
+        Button^ button;
+    };
+}
+
+[STAThread]
+int main(array<System::String ^> ^args) {
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    YourAppName::MainForm form;
+    Application::Run(%form);
+    return 0;
+}
